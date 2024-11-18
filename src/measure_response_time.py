@@ -5,10 +5,10 @@ from time import sleep
 import requests
 
 
-# 入力プロンプト配列
+# 入力プロンプトリスト
 prompts_list = [
-    "",
-    "",
+    "prompt 1",
+    "prompt 2",
 ]
 
 # Azure Open AI API情報
