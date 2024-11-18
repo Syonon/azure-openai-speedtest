@@ -4,10 +4,12 @@
 Windows 11 Pro 23H2
 Python 3.11.9
 
-## デプロイモデル
+## 結果
+root/output.csv
+
+## デプロイしたモデル
 
 - Azure OpenAI
     - GPT 4 vision-preview standard japaneast
     - GPT 4o 2024-05-13 global-standard japaneast
     - GPT 4o 2024-05-13 standard eastus
-    
