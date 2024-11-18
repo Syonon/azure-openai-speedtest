@@ -11,6 +11,19 @@ prompts_list = [
     "",
 ]
 
+# Azure Open AI API情報
+API_KEYS = {
+    "4jp": os.getenv("AOAI_API_KEY"),
+    "4ojp": os.getenv("AOAI_API_KEY"),
+    "4ous": os.getenv("AOAI_API_KEY"),
+}
+
+ENDPOINTS = {
+    "4jp": os.getenv("AOAI_ENDPOINT"),
+    "4ojp": os.getenv("AOAI_ENDPOINT"),
+    "4ous": os.getenv("AOAI_ENDPOINT"),
+}
+
 
 def send_request_to_azure_openai(api_key: str, endpoint: str, payload: dict)-> requests.Response:
     """
@@ -33,24 +46,11 @@ def send_request_to_azure_openai(api_key: str, endpoint: str, payload: dict)-> r
         return None  # エラーが発生した場合はNoneを返す
 
     return response
-
+        
 
 if __name__ == "__main__":
-
-    API_KEYS = {
-        "4jp": os.getenv("AOAI_API_KEY"),
-        "4ojp": os.getenv("AOAI_API_KEY"),
-        "4ous": os.getenv("AOAI_API_KEY"),
-    }
-
-    ENDPOINTS = {
-        "4jp": os.getenv("AOAI_ENDPOINT"),
-        "4ojp": os.getenv("AOAI_ENDPOINT"),
-        "4ous": os.getenv("AOAI_ENDPOINT"),
-    }
-
-    # 出力先CSVのヘッダー
-    with open(file="output.csv", mode="a", encoding="utf-8", newline="") as f:
+    # 出力先CSVのヘッダー設定
+    with open(file="output.csv", mode="w", encoding="utf-8", newline="") as f:
         csv_writer = csv.writer(f)
         csv_writer.writerow(["gpt-4-jp", "gpt-4o-jp", "gpt-4o-us"])
 
@@ -72,8 +72,7 @@ if __name__ == "__main__":
             "max_tokens": 2000,
         }
 
-        # for key in ["4jp", "4ojp", "4ous"]:
-        for key in ["4ojp"]:
+        for key in ["4jp", "4ojp", "4ous"]:
             response = send_request_to_azure_openai(
                 API_KEYS[key], ENDPOINTS[key], payload
             )

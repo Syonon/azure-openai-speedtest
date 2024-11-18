@@ -1,13 +1,20 @@
 # Azure OpenAI GPT-4とGPT-4oの応答速度比較
 
 ## 環境
+
 Windows 11 Pro 23H2
 Python 3.11.9
 
 ## 結果
+
 root/output.csv
 
-## デプロイしたモデル
+
+## Requests Error
+
+Requests Errorでrequests.ResponseはNone。elapsed_timeは-1を出力。
+
+## デプロイしたモデル例
 
 - Azure OpenAI
     - GPT 4 vision-preview standard japaneast
